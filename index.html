@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Vue Calculate Product</title>
+</head>
+<body>
+  <div id="vue-test" class="container" >
+    <form action="">
+      <input type="text" placeholder="Type Tour Post Title" v-model='input'>
+      <button @click.prevent='convertToSlug'> convert To Slug </button>
+    </form>
+    <div class="slug-result">
+      https://Sameh.com/<span> {{ output }} </span>
+    </div>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#vue-test',
+      data: {
+        input: '',
+        output: ''
+      },
+      methods: {
+        convertToSlug(e) {
+          
+          // Cache The Variable
+          var theSlug = this.input;
+
+          // [1] Convert To LowerCase 
+          theSlug = theSlug.toLowerCase();
+
+          // [2] Replace With Spaces With Dashes
+          theSlug = theSlug.replace(/\s+/g, '-');
+        
+          // [2] Replace With Spaces With Dashes
+          theSlug = theSlug.replace(/&/g, '-and-');
+
+          // Add To Result Output
+          this.output = theSlug;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
